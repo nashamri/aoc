@@ -1,14 +1,10 @@
-with open("input") as f:
-    cals = []
-    temp = []
+temp = []
+cals = 0
+with open('input') as f: 
     for line in f.readlines():
         if line != "\n":
             temp.append(int(line))
         else:
-            cals.append(sum(temp))
+            cals = max(sum(temp) , cals)
             temp = []
-
-    #cals = [int(elf) for elf in [line for line in f.readlines()]]
-
-
-print(max(cals))
+print(cals)
