@@ -1,2 +1,5 @@
 .devenv*
 devenv.local.nix
+.clj-kondo
+.cpcache
+.lsp

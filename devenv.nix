@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   packages = with pkgs; [
     git
+    python310Packages.black
+    nodePackages.pyright
   ];
 
   languages = {
