@@ -3,6 +3,10 @@
     git
   ];
 
-  languages.nix.enable = true;
-  languages.python.enable = true;
+  languages = {
+    nix.enable = true;
+    python.enable = true;
+    haskell.enable = true;
+    clojure.enable = true;
+  };
 }
