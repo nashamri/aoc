@@ -31,18 +31,34 @@
                (s/subset?
                 (set (apply range y))
                 (set (apply range x)))))
-
          (common)))
        true))
 
-(defn part2-sol [])
+(defn part2-sol []
+  (get (frequencies
+        (mapv
+         (fn [[x y]]
+           (empty? (s/intersection
+                    (set (apply range x))
+                    (set (apply range y)))))
+         (common)))
+       false))
 
 (comment
+  (get (frequencies
+        (mapv
+         (fn [[x y]]
+           (empty? (s/intersection
+                    (set (apply range x))
+                    (set (apply range y)))))
+         (-> sample (parse))))
+       false)
   ;
-  )
+  (empty? (s/intersection #{1 2} #{3 4})))
+
 (defn -main
   "Invoke me with clojure -M -m solution"
   [& _]
-  (println (str "Part 1: " (part1-sol))) ;
-  (println (str "Part 2: " (part2-sol))) ;
+  (println (str "Part 1: " (part1-sol))) ;515
+  (println (str "Part 2: " (part2-sol))) ;883
   )
