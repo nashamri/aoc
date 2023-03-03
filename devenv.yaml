@@ -1,5 +1,3 @@
 inputs:
   nixpkgs:
     url: github:NixOS/nixpkgs/release-22.11
-  devenv:
-    url: github:cachix/devenv/v0.4

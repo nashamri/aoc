@@ -4,3 +4,4 @@ devenv.local.nix
 .cpcache
 .lsp
 .nrepl-port
+.direnv
