@@ -2,8 +2,11 @@
   (:require [clojure.string :as str]
             [clojure.core.match :refer [match]]))
 
-(defn parse [data]
-  (->> data
+(def sample "src/day02/sample.txt")
+(def input "src/day02/input.txt")
+
+(defn parse [f]
+  (->> (slurp f)
        (#(str/split % #"\n"))
        (mapv #(str/split % #"\n"))
        (mapv (fn [[x]]
@@ -42,22 +45,16 @@
         [:C :Y] (+ 3 3)
         [:C :Z] (+ 1 6)))
 
-(defn common []
-  (->> (slurp "src/day02/input.txt") (parse)))
-
-(defn part1-sol []
-  (->> (common)
+(defn part1-sol [f]
+  (->> (parse f)
        (mapv score-p1)
        (reduce +)))
 
-(defn part2-sol []
-  (->> (common)
+(defn part2-sol [f]
+  (->> (parse f)
        (mapv score-p2)
        (reduce +)))
 
-(defn -main
-  "Invoke me with clojure -M -m solution"
-  [& _]
-  (println (str "Part 1: " (part1-sol))) ;11063
-  (println (str "Part 2: " (part2-sol))) ;10349
-  )
+(defn -main [& _]
+  (println (str "Part 1: " (part1-sol input)))
+  (println (str "Part 2: " (part2-sol input))))

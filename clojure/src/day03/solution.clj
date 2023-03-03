@@ -1,16 +1,11 @@
 (ns day03.solution
   (:require [clojure.string :as str]))
 
-(def trivial
-  "vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw")
+(def sample "src/day03/sample.txt")
+(def input "src/day03/input.txt")
 
-(defn parse [data]
-  (->> data
+(defn parse [f]
+  (->> (slurp f)
        (#(str/split % #"\n"))))
 
 (defn half-it [xs]
@@ -36,25 +31,20 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
                  alphas (concat a A)]
              (zipmap alphas (drop 1 (range)))))
 
-(defn common []
-  (->> (slurp "src/day03/input.txt") (parse)))
-
-(defn part1-sol []
-  (->> (common)
+(defn part1-sol [f]
+  (->> (parse f)
        (mapv (comp find-comp half-it))
        (mapv #(% prios))
        (reduce +)))
 
-(defn part2-sol []
-  (->> (common)
+(defn part2-sol [f]
+  (->> (parse f)
        group-badges
        (mapv  find-badge)
        (mapv #(% prios))
        (reduce +)))
 
-(defn -main
-  "Invoke me with clojure -M -m solution"
-  [& _]
-  (println (str "Part 1: " (part1-sol))) ;8018
-  (println (str "Part 2: " (part2-sol))) ;2518
+(defn -main [& _]
+  (println (str "Part 1: " (part1-sol input))) ;8018
+  (println (str "Part 2: " (part2-sol input))) ;2518
   )
