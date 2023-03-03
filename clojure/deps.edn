@@ -1,0 +1,15 @@
+{:paths ["src"
+         ;"day01"
+         ;"day02"
+         ;"day03"
+         ;"day04"
+         ;"day05"
+         ;"day06"
+         ;"day07"
+         ]
+ :deps  {org.clojure/clojure {:mvn/version "1.11.1"}
+         org.clojure/core.match {:mvn/version "1.0.0"}}
+ :aliases {:nrepl {:extra-deps {nrepl/nrepl {:mvn/version "1.0.0"}}
+                   :main-opts ["-m" "nrepl.cmdline"]}
+           :test {:extra-deps {lambdaisland/kaocha {:mvn/version "1.71.1119"}}
+                  :main-opts ["-m" "kaocha.runner"]}}}

@@ -1,10 +1,10 @@
-(ns solution
+(ns day06.solution
   (:require [clojure.string :as str]))
 
 (def sample "mjqjpqmgbljsphdztnvjfqwrcgsmlb")
 
 (defn common []
-  (->> (slurp "input.txt")))
+  (->> (slurp "src/day06/input.txt")))
 
 (defn part1-sol []
   (->> (common)

@@ -1,4 +1,4 @@
-(ns solution
+(ns day03.solution
   (:require [clojure.string :as str]))
 
 (def trivial
@@ -37,7 +37,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw")
              (zipmap alphas (drop 1 (range)))))
 
 (defn common []
-  (->> (slurp "input.txt") (parse)))
+  (->> (slurp "src/day03/input.txt") (parse)))
 
 (defn part1-sol []
   (->> (common)

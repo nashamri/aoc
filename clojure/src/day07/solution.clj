@@ -1,7 +1,5 @@
-(ns solution
-  (:require [clojure.string :as str]
-            [flow-storm.api :as fs-api]
-            [portal.api :as p]))
+(ns day07.solution
+  (:require [clojure.string :as str]))
 
 (defmacro forv [& forms]
   `(vec (for ~@forms)))
@@ -32,24 +30,10 @@ $ ls
 7214296 k")
 
 (defn common []
-  (->> (slurp "input.txt")))
+  (->> (slurp "src/day07/input.txt")))
 
 (comment
-
-  (def p (p/open))
-
-  (add-tap #'p/submit)
-
-  (p/close)
-
-  (tap> sample)
-
-  #rtrace (common)
-
-  (fs-api/local-connect {:styles ".flow-storm-styles.css" :theme :dark})
-
   (reductions + (map inc (range 10)))
-
 ; 
   )
 

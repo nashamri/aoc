@@ -1,4 +1,4 @@
-(ns solution
+(ns day05.solution
   (:require [clojure.string :as str]))
 
 (def sample
@@ -38,7 +38,7 @@ move 1 from 1 to 2")
 (def state (atom {}))
 
 (defn common []
-  (->> (slurp "input.txt") (parse)))
+  (->> (slurp "src/day05/input.txt") (parse)))
 
 (defn up! [[c f t]]
   (dotimes [_ c]

@@ -1,4 +1,4 @@
-(ns solution
+(ns day04.solution
   (:require [clojure.string :as str]
             [clojure.set :as s]))
 
@@ -19,7 +19,7 @@
        (mapv (fn [[[x1 y1] [x2 y2]]] [[x1 (inc y1)] [x2 (inc y2)]]))))
 
 (defn common []
-  (->> (slurp "input.txt") (parse)))
+  (->> (slurp "src/day04/input.txt") (parse)))
 
 (defn part1-sol []
   (get (frequencies

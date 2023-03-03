@@ -6,7 +6,7 @@
  :kaocha/fail-fast?                  false
  :kaocha/watch?                      true
  :kaocha/color?                      true
- :kaocha/reporter                    [kaocha.report/dots]
+ :kaocha/reporter                    [kaocha.report/result]
  :kaocha/plugins                     [:kaocha.plugin/randomize
                                       :kaocha.plugin/filter
                                       :kaocha.plugin/capture-output

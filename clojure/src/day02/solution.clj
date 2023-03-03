@@ -1,4 +1,4 @@
-(ns solution
+(ns day02.solution
   (:require [clojure.string :as str]
             [clojure.core.match :refer [match]]))
 
@@ -43,7 +43,7 @@
         [:C :Z] (+ 1 6)))
 
 (defn common []
-  (->> (slurp "input.txt") (parse)))
+  (->> (slurp "src/day02/input.txt") (parse)))
 
 (defn part1-sol []
   (->> (common)
