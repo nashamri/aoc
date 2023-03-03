@@ -11,4 +11,9 @@
     haskell.enable = true;
     clojure.enable = true;
   };
+
+  scripts.clj-dev.exec = ''
+    cd clojure
+    zellij -l layout.kdl
+  '';
 }

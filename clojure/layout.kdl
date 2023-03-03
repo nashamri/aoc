@@ -1,0 +1,26 @@
+layout {
+    pane_template name="my_pane" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="nREPL" {
+        my_pane {
+            pane command="clj" {
+                args "-Mnrepl"
+            }
+        }
+    }
+    tab name="main" {
+        my_pane split_direction="vertical" {
+            pane command="vim" size="77%"
+            pane command="clj" {
+                args "-Mtest"
+            }
+        }
+    }
+}
