@@ -15,6 +15,11 @@ layout {
             }
         }
     }
+    tab name="git" {
+        my_pane {
+            pane command="lazygit"
+        }
+    }
     tab name="main" {
         my_pane split_direction="vertical" {
             pane command="vim" size="77%"
