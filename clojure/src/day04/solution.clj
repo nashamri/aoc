@@ -2,26 +2,18 @@
   (:require [clojure.string :as str]
             [clojure.set :as s]))
 
-(def sample
-  "2-4,6-8
-2-3,4-5
-5-7,7-9
-2-8,3-7
-6-6,4-6
-2-6,4-8")
+(def sample "src/day04/sample.txt")
+(def input "src/day04/input.txt")
 
-(defn parse [data]
-  (->> data
+(defn parse [f]
+  (->> (slurp f)
        (#(str/split % #"\n"))
        (mapv #(str/split % #","))
        (mapv (fn [x] (mapv #(str/split % #"-") x)))
        (mapv (fn [x] (mapv (fn [y] (mapv parse-long y)) x)))
        (mapv (fn [[[x1 y1] [x2 y2]]] [[x1 (inc y1)] [x2 (inc y2)]]))))
 
-(defn common []
-  (->> (slurp "src/day04/input.txt") (parse)))
-
-(defn part1-sol []
+(defn part1-sol [f]
   (get (frequencies
         (mapv
          (fn [[x y]]
@@ -31,17 +23,17 @@
                (s/subset?
                 (set (apply range y))
                 (set (apply range x)))))
-         (common)))
+         (parse f)))
        true))
 
-(defn part2-sol []
+(defn part2-sol [f]
   (get (frequencies
         (mapv
          (fn [[x y]]
            (empty? (s/intersection
                     (set (apply range x))
                     (set (apply range y)))))
-         (common)))
+         (parse f)))
        false))
 
 (comment
@@ -56,9 +48,6 @@
   ;
   (empty? (s/intersection #{1 2} #{3 4})))
 
-(defn -main
-  "Invoke me with clojure -M -m solution"
-  [& _]
-  (println (str "Part 1: " (part1-sol))) ;515
-  (println (str "Part 2: " (part2-sol))) ;883
-  )
+(defn -main [& _]
+  (println (str "Part 1: " (part1-sol input)))
+  (println (str "Part 2: " (part2-sol input))))

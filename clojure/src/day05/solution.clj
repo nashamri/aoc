@@ -1,22 +1,14 @@
 (ns day05.solution
   (:require [clojure.string :as str]))
 
-(def sample
-  "    [D]    
-[N] [C]    
-[Z] [M] [P]
- 1   2   3 
-
-move 1 from 2 to 1
-move 3 from 1 to 3
-move 2 from 2 to 1
-move 1 from 1 to 2")
+(def sample "src/day05/sample.txt")
+(def input "src/day05/input.txt")
 
 (defn transpose [& xs]
   (apply mapv (comp vector str) xs))
 
-(defn parse [data]
-  (let [[crates_ stmts_] (str/split data #"\n\n")
+(defn parse [f]
+  (let [[crates_ stmts_] (str/split (slurp f) #"\n\n")
         crates_ (->> (apply transpose (str/split crates_ #"\n"))
                      (remove #(or (str/includes? (first %) "[")
                                   (str/includes? (first %) "]")
@@ -37,9 +29,6 @@ move 1 from 1 to 2")
 
 (def state (atom {}))
 
-(defn common []
-  (->> (slurp "src/day05/input.txt") (parse)))
-
 (defn up! [[c f t]]
   (dotimes [_ c]
     (let [x (peek (f (:crates @state)))
@@ -56,13 +45,13 @@ move 1 from 1 to 2")
     (swap! state update-in [:crates t] concatv (vec x))
     (swap! state assoc-in [:crates f] (vec xs))))
 
-(defn part1-sol []
-  (reset! state (common))
+(defn part1-sol [f]
+  (reset! state (parse f))
   (mapv up! (:stmts @state))
   (apply str (map #((comp name last) %) (vals (sort (:crates @state))))))
 
-(defn part2-sol []
-  (reset! state (common))
+(defn part2-sol [f]
+  (reset! state (parse f))
   (mapv up2! (:stmts @state))
   (apply str (map #((comp name last) %) (vals (sort (:crates @state))))))
 
@@ -70,9 +59,6 @@ move 1 from 1 to 2")
   ;
   )
 
-(defn -main
-  "Invoke me with clojure -M -m solution"
-  [& _]
-  (println (str "Part 1: " (part1-sol))) ;VRWBSFZWM
-  (println (str "Part 2: " (part2-sol))) ;RBTWJWMCF
-  )
+(defn -main [& _]
+  (println (str "Part 1: " (part1-sol input)))
+  (println (str "Part 2: " (part2-sol input))))
