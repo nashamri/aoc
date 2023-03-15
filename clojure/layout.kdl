@@ -23,6 +23,8 @@ layout {
     tab name="main" {
         my_pane split_direction="vertical" {
             pane command="vim" size="77%"
+        }
+        floating_panes {
             pane command="clj" {
                 args "-Mtest"
             }
