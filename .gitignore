@@ -5,3 +5,4 @@ devenv.local.nix
 .lsp
 .nrepl-port
 .direnv
+rust/day-01/target
