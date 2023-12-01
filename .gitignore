@@ -6,3 +6,4 @@ devenv.local.nix
 .nrepl-port
 .direnv
 rust/day-01/target
+2022/rust/day-01/target
