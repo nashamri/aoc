@@ -1,0 +1,9 @@
+theme = "onedark"
+
+[keys.normal]
+F5 = ":w!"
+F6 = ":reload"
+
+[keys.insert]
+F5 = ":w!"
+F6 = ":reload"
