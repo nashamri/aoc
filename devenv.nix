@@ -22,7 +22,7 @@
   };
 
   scripts.clj-dev.exec = ''
-    cd clojure
+    cd 2022/clojure
     zellij -l layout.kdl
   '';
 }
