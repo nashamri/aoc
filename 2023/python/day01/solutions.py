@@ -11,7 +11,3 @@ with open("sample.txt","r") as file:
         numbers.append(int(first_digit+last_digit))
 
 print(sum(numbers))
-
-
-  git config --global user.email "farisala@infinitepl.com"
-  git config --global user.name "@Githuba93bpasswordbaltare5"
