@@ -3,4 +3,4 @@ inputs:
     # url: github:NixOS/nixpkgs/2dbef07f0972d636402035155d2bfaf9cc4507a9
     url: github:NixOS/nixpkgs/nixos-23.11
   uiuapkg:
-    url: github:uiua-lang/uiua/0.2.0
+    url: github:uiua-lang/uiua/0.4.1
